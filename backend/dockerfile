@@ -1,0 +1,15 @@
+FROM node:18       
+
+WORKDIR /api              
+
+COPY . .        
+
+COPY prisma ./prisma/
+
+RUN npm install      
+
+RUN npx prisma generate   
+    
+EXPOSE 8080                    
+
+CMD ["npm", "run","start:migrate"]  
